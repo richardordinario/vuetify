@@ -1,15 +1,10 @@
 <template>
-     <v-app>
-        <v-navigation-drawer app v-model="drawer">
+     <v-app id="inspire" style="background: #e6e6e6">
+        <v-navigation-drawer app v-model="drawer" floating>
             <Sidebar/>
         </v-navigation-drawer>
-
-        <v-app-bar app color="gray" flat fixed>
-            <v-app-bar-nav-icon class="body-1 grey--text" @click.stop="drawer = !drawer">
-            </v-app-bar-nav-icon>
-            <v-toolbar-title class="text-uppercase grey--text" >
-                <span class="font-weight-light body-1">LMS</span>
-            </v-toolbar-title>
+        <v-app-bar app color="white" elevation="0" dark>
+            <v-app-bar-nav-icon class="body-1 black--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         </v-app-bar>
         <v-main>
             <router-view></router-view>
@@ -19,7 +14,7 @@
 
 <script>
     import Sidebar from './Sidebar.vue'
-    
+
     export default {
         components: {
             Sidebar
@@ -27,6 +22,11 @@
         data() {
             return {
                 drawer: null,
+                items: [
+                    {title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/dashboard'},
+                    {title: 'Subjects', icon: 'mdi-book' , link: '/subject'},
+                    {title: 'Account', icon: 'mdi-account', link: '/account'},
+                ],
             }
         }
     }
