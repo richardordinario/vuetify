@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Api\Teacher;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Teacher\SubjectResource;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
-use App\Subject;
+use App\Instructional;
 
-class SubjectController extends Controller
+class InstructionalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +16,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $data = Subject::paginate(6);
-        // $data = [
-        //     'all' => ,
-        //     'publish' => Subject::where('status', 1)->paginate(6),
-        //     'approval' => Subject::where('status', 0)->paginate(6),
-        //     'draft' => Subject::where('status', 2)->paginate(6),
-        // ];
-        return response()->json($data, 201);
+        //
     }
 
     /**
@@ -45,18 +37,16 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
+        foreach (json_decode($request->form) as $value) {
+            Instructional::create([
+                'iuuid' => Helper::uuid(),
+                'subject_id' => $value->sid,
+                'type' => $value->type,
+                'title' => $value->title,
+            ]);
+        }
 
-        $request->validate([
-            'subject' => 'required',
-            'grade' => 'required',
-        ]);
-
-        Subject::create([
-            'suuid' => Helper::uuid(),
-            'subject' => $request->subject,
-            'grade' => $request->grade,
-        ]);
-        return response()->json('Save Successfully', 200);
+        return response()->json('Successfully Save!', 201);
     }
 
     /**
@@ -67,8 +57,7 @@ class SubjectController extends Controller
      */
     public function show($id)
     {
-        $data = Subject::where('suuid', $id)->first();
-        return response()->json($data, 201);
+        //
     }
 
     /**
@@ -91,12 +80,7 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Subject::where('suuid', $id)->update([
-            'subject'=>$request->subject,
-            'grade'=>$request->grade,
-            'description'=>$request->description,
-        ]);
-        return response()->json($request, 200);
+        //
     }
 
     /**

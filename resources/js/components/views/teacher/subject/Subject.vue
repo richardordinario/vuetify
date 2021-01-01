@@ -32,7 +32,7 @@
                                                             <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
                                                             class="white--text align-end"
                                                             height="300px">
-                                                                <v-card-title>{{all['subject'] + ' ' + all['grade']}} </v-card-title>
+                                                                <v-card-title>{{ all['subject'] + ' ' + all['grade'] }} </v-card-title>
                                                             </v-img>
                                                             <v-card-subtitle class="pb-0">
                                                                 Teacher Dela Cruz
@@ -41,9 +41,12 @@
                                                                <div class="">Lorem Ipsum</div>
                                                             </v-card-text>
                                                             <v-card-actions>
-                                                                <v-btn text color="primary">
-                                                                    Read More
-                                                                </v-btn>
+                                                                <router-link :to="'/subject/details/'+all.suuid">
+                                                                    <v-btn text color="primary">
+                                                                        Read More
+                                                                    </v-btn>
+                                                                </router-link>
+                                                                
                                                             </v-card-actions>
                                                         </v-card>
                                                     </v-col>
@@ -177,8 +180,20 @@
                 <v-card-title><span class="headline green--text">Add Subject</span> </v-card-title>
                 <v-card-text>
                     <v-container class="mt-5">
-                        <v-text-field v-model="form.subject" clearable rounded dense outlined label="Name"></v-text-field>
-                        <v-select v-model="form.grade" clearable rounded dense outlined label="Grade Level" :items="grade"></v-select>
+                        <v-text-field 
+                        v-model="form.subject" 
+                        clearable 
+                        dense 
+                        outlined 
+                        label="Name"
+                        ></v-text-field>
+                        <v-select 
+                        v-model="form.grade" 
+                        clearable
+                        dense 
+                        outlined 
+                        label="Grade Level" 
+                        :items="grade"></v-select>
                     </v-container>
                 </v-card-text>
                 <v-card-actions class="mt-0 pt-0">

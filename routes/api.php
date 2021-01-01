@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['prefix' => 'teacher'], function() {
     Route::resource('subject','Api\Teacher\SubjectController');
+    Route::resource('instructional','Api\Teacher\InstructionalController');
 });
 
 

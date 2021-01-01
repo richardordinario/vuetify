@@ -1,5 +1,4 @@
-import { get } from 'lodash'
-import Api from '../Api'
+import Api from '../../Api'
 
 export default {
     add(form) {
@@ -10,5 +9,11 @@ export default {
     },
     paginate(page) {
         return Api().get('/api/teacher/subject?page='+ page)
+    },
+    show(suuid) {
+        return Api().get('/api/teacher/subject/'+ suuid)
+    },
+    update(form) {
+        return Api().put('/api/teacher/subject/'+ form.suuid, form)
     }
 }

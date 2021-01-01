@@ -1,11 +1,11 @@
 <template>
-     <v-app id="inspire" style="background: #e6e6e6">
-        <v-navigation-drawer app v-model="drawer" floating>
-            <Sidebar/>
-        </v-navigation-drawer>
+     <v-app style="background: #e6e6e6">
         <v-app-bar app color="white" elevation="0" dark>
             <v-app-bar-nav-icon class="body-1 black--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         </v-app-bar>
+        <v-navigation-drawer app v-model="drawer">
+            <Sidebar/>
+        </v-navigation-drawer>
         <v-main>
             <router-view></router-view>
         </v-main>
